@@ -5,4 +5,4 @@ function Header(){
     dom.appendChild(header);
 }
 
-export default Header;
+module.exports = Header;

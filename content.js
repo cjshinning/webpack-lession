@@ -5,4 +5,4 @@ function Content(){
     dom.appendChild(content);
 }
 
-export default Content;
+module.exports = Content;
