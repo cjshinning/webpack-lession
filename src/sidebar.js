@@ -5,4 +5,4 @@ function Sidebar(){
     dom.appendChild(sidebar);
 }
 
-module.exports = sidebar;
+module.exports = Sidebar;
