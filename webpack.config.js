@@ -12,8 +12,8 @@ module.exports = {
     devServer: {
       contentBase: './dist',
       open: true,
-      // hot: true,
-      // hotOnly: true
+      hot: true,
+      hotOnly: true
     },
     output: {
       // publicPath: '/',
@@ -90,6 +90,6 @@ module.exports = {
         template: './src/index.html'
       }),
       new CleanWebpackPlugin(),
-      // new webpack.HotModuleReplacementPlugin()
+      new webpack.HotModuleReplacementPlugin()
     ]
 }
