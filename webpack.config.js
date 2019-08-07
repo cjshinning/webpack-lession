@@ -2,17 +2,18 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
-// plugin 可以在webpack运行到某个时刻的时候，帮你做一些事情
-
 module.exports = {
     mode: 'development',
-    // development devtool: 'cheap-module-eval-source-map'
-    // production devtool: 'cheap-module-source-map'
     devtool: 'cheap-module-eval-source-ma',
     entry: {
       'main': './src/index.js'
     },
+    devServer: {
+      contentBase: './dist',
+      open: true
+    },
     output: {
+      // publicPath: '/',
       filename: '[name].js',
       path: path.resolve(__dirname, './dist')
     },
