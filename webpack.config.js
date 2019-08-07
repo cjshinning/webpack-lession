@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
     mode: 'development',
@@ -10,7 +11,9 @@ module.exports = {
     },
     devServer: {
       contentBase: './dist',
-      open: true
+      open: true,
+      // hot: true,
+      // hotOnly: true
     },
     output: {
       // publicPath: '/',
@@ -63,6 +66,22 @@ module.exports = {
                   }
                 }
               ]
+            },
+            {
+              test: /\.css$/,
+              use: [
+                'style-loader',
+                'css-loader',
+                {
+                  loader: 'postcss-loader',
+                  options: {
+                    ident: 'postcss',
+                    plugins: [
+                      require('autoprefixer')
+                    ]
+                  }
+                }
+              ]
             }
         ]
     },
@@ -70,6 +89,7 @@ module.exports = {
       new HtmlWebpackPlugin({
         template: './src/index.html'
       }),
-      new CleanWebpackPlugin()
+      new CleanWebpackPlugin(),
+      // new webpack.HotModuleReplacementPlugin()
     ]
 }
