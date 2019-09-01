@@ -2,6 +2,7 @@
   "name": "webpack-lession",
   "version": "1.0.0",
   "description": "learning webpack",
+  "sideEffects": false,
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server"
