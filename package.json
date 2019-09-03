@@ -5,7 +5,8 @@
   "sideEffects": false,
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server"
+    "dev": "webpack-dev-server --config ./build/webpack.dev.js",
+    "build": "webpack --config ./build/webpack.prod.js"
   },
   "repository": {
     "type": "git",
@@ -37,7 +38,8 @@
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.5",
     "webpack-dev-middleware": "^3.7.0",
-    "webpack-dev-server": "^3.7.2"
+    "webpack-dev-server": "^3.7.2",
+    "webpack-merge": "^4.2.2"
   },
   "browserslist": [
     "defaults",
