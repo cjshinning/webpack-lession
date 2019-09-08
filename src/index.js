@@ -1,8 +1,15 @@
-import _ from 'lodash';
+import a from 'a';
+import b from 'b';
 
-var element = document.createElement('div');
-element.innerHTML = _.join(['Jenny', 'Chen'], '-');
-document.body.appendChild(element);
+// import test from './test';
+// console.log(test.name);
+
+// import _ from 'lodash';
+// import jquery from 'jquery';
+
+// var element = document.createElement('div');
+// element.innerHTML = _.join(['Jenny', 'Chen'], '-');
+// document.body.appendChild(element);
 
 // function getComponent(){
 //     return import(/* webpackChunkName:"lodash" */'lodash').then(({default: _}) => {

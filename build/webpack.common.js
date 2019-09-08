@@ -90,7 +90,6 @@ module.exports = {
       splitChunks: {
         chunks: 'all',
         minSize: 30000,
-        maxSize: 0,
         minChunks: 1,
         maxAsyncRequests: 5,
         maxInitialRequests: 3,
@@ -103,7 +102,11 @@ module.exports = {
             priority: -10,
             filename: 'vendors.js'
           },
-          default: false
+          default: {
+            priority: -20,
+            reuseExistingChunk: true,
+            filename: 'common.js'
+          }
         }
       }
     }
