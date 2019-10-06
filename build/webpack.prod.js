@@ -1,9 +1,12 @@
+const merge = require('webpack-merge');
+const commonConfig = require('./webpack.common');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 const prodConfig = {
     mode: 'production',
-    // devtool: 'cheap-module-source-map',
+    devtool: 'cheap-module-source-map',
     output: {
         filename: '[name].[contenthash].js',
         chunkFilename: '[name].[contenthash].js',
@@ -58,8 +61,12 @@ const prodConfig = {
         new MiniCssExtractPlugin({
             filename: '[name].css',
             chunkFilename: '[name].chunk.css'
+        }),
+        new WorkboxPlugin.GenerateSW({
+            clientsClaim: true,
+            skipWaiting: true
         })
     ]
 }
 
-module.exports = prodConfig;
+module.exports = merge(commonConfig, prodConfig);

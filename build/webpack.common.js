@@ -1,12 +1,8 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const devConfig = require('./webpack.dev');
-const prodConfig = require('./webpack.prod');
 
-const commonConfig = {
+module.exports = {
   entry: {
     'main': './src/index.js'
   },
@@ -21,9 +17,6 @@ const commonConfig = {
           use: [
             {
               loader: 'babel-loader' 
-            },
-            {
-              loader: 'imports-loader?this=>window' 
             }
           ]
           
@@ -56,11 +49,7 @@ const commonConfig = {
     new HtmlWebpackPlugin({
       template: './src/index.html'
     }),
-    new CleanWebpackPlugin(),
-    new webpack.ProvidePlugin({
-      $: 'jquery',
-      _join: ['lodash', 'join']
-    })
+    new CleanWebpackPlugin()
   ],
   optimization: {
     usedExports: true,
@@ -76,12 +65,4 @@ const commonConfig = {
     }
   },
   performance: false
-}
-
-module.exports = (env) => {
-  if(env && env.production){
-    return merge(commonConfig, prodConfig);
-  }else{
-    return merge(commonConfig, devConfig);
-  }
 }
