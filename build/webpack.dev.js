@@ -10,6 +10,10 @@ const devConfig = {
       open: true,
       hot: true
     },
+    output: {
+      filename: '[name].js',
+      chunkFilename: '[name].js',
+    },
     module: {
       rules: [
         
