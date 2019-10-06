@@ -10,12 +10,53 @@ const devConfig = {
       open: true,
       hot: true
     },
+    module: {
+      rules: [
+        
+        {
+          test: /\.scss$/,
+          use: [
+            'style-loader',
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 2,
+                // modules: true
+              }
+            },
+            'sass-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                ident: 'postcss',
+                plugins: [
+                  require('autoprefixer')
+                ]
+              }
+            }
+          ]
+        },
+        {
+          test: /\.css$/,
+          use: [
+            'style-loader',
+            'css-loader',
+            {
+              loader: 'postcss-loader',
+              options: {
+                ident: 'postcss',
+                plugins: [
+                  require('autoprefixer')
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
     plugins: [
       new webpack.HotModuleReplacementPlugin()
-    ],
-    optimization: {
-      usedExports: true
-    }
+    ]
 }
 
 module.exports = merge(commonConfig, devConfig);

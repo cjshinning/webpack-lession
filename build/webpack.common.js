@@ -8,6 +8,7 @@ module.exports = {
     },
     output: {
       filename: '[name].js',
+      chunkFilename: '[name].chunks.js',
       path: path.resolve(__dirname, '../dist')
     },
     module: {
@@ -38,45 +39,6 @@ module.exports = {
                 loader: 'file-loader'
               }
             ]
-          },
-          {
-            test: /\.scss$/,
-            use: [
-              'style-loader',
-              {
-                loader: 'css-loader',
-                options: {
-                  importLoaders: 2,
-                  // modules: true
-                }
-              },
-              'sass-loader',
-              {
-                loader: 'postcss-loader',
-                options: {
-                  ident: 'postcss',
-                  plugins: [
-                    require('autoprefixer')
-                  ]
-                }
-              }
-            ]
-          },
-          {
-            test: /\.css$/,
-            use: [
-              'style-loader',
-              'css-loader',
-              {
-                loader: 'postcss-loader',
-                options: {
-                  ident: 'postcss',
-                  plugins: [
-                    require('autoprefixer')
-                  ]
-                }
-              }
-            ]
           }
         ]
     },
@@ -87,6 +49,7 @@ module.exports = {
       new CleanWebpackPlugin()
     ],
     optimization: {
+      usedExports: true,
       splitChunks: {
         chunks: 'all'
       }
