@@ -13,7 +13,21 @@ module.exports = {
       contentBase: './dist',
       open: true,
       hot: true,
-      hotOnly: true
+      hotOnly: true,
+      proxy: {
+        '/react/api': {
+          target: 'http://www.dell-lee.com',
+          secure: false,
+          pathRewrite: {
+            // 'header.json': 'demo.json'
+          },
+          changeOrigin: true,
+          header: {
+            host: 'www.dell-lee.com',
+            cookie: 'sdhdh'
+          }
+        }
+      }
     },
     output: {
       // publicPath: '/',
